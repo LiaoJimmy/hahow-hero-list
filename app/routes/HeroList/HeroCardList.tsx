@@ -3,14 +3,15 @@ import { HeroCard } from './HeroCard';
 
 interface HeroCardListProps {
   heroes: ListHeroesResponse;
+  onSelect: (heroId: string) => void;
 }
 
-export function HeroCardList({ heroes }: HeroCardListProps) {
+export function HeroCardList({ heroes, onSelect }: HeroCardListProps) {
   return (
     <div className="flex flex-wrap gap-2">
       {
         heroes.map(hero => (
-          <HeroCard key={hero.id} hero={hero} />
+          <HeroCard key={hero.id} hero={hero} onSelect={onSelect} />
         ))
       }
     </div>
