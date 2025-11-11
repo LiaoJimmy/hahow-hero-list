@@ -11,22 +11,22 @@ export function listHeroesQuery() {
   };
 }
 
-export function useGetHero(heroId: string) {
-  return useQuery({
+export function getHeroQuery(heroId: string) {
+  return {
     queryKey: ['hero', heroId],
     queryFn: () => {
       return HahowRecruitAPI.get<GetHeroResponse>(`/heroes/${heroId}`);
     },
-  });
+  };
 }
 
-export function useGetHeroProfile(heroId: string) {
-  return useQuery({
+export function getHeroProfileQuery(heroId: string) {
+  return {
     queryKey: ['hero', heroId, 'profile'],
     queryFn: () => {
       return HahowRecruitAPI.get<GetHeroProfileResponse>(`/heroes/${heroId}/profile`);
     },
-  });
+  };
 }
 
 export function usePatchHeroProfile(heroId: string, profile: PatchHeroProfileBody) {

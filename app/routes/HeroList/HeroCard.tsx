@@ -17,7 +17,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
 
   return (
     <div
-      className={classNames('card bg-base-100 w-72 shadow-sm', {
+      className={classNames('card bg-base-100 w-72 shadow-sm cursor-pointer', {
         'card-selected': hero.id === selectedHeroId,
       })}
       onClick={handleCardClick}

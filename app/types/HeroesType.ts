@@ -15,3 +15,9 @@ export type ListHeroesResponse = Hero[];
 export type GetHeroResponse = Hero;
 export type GetHeroProfileResponse = HeroProfile;
 export type PatchHeroProfileBody = HeroProfile;
+
+export interface HeroLoaderParams {
+  params: {
+    heroId?: string;
+  };
+}

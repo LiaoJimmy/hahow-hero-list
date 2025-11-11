@@ -1,3 +1,4 @@
+import type { HeroLoaderParams } from '~/types/HeroesType';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { Outlet, useNavigate } from 'react-router';
 import HahowqueryClient from '~/api/HahowQueryClient';
@@ -6,7 +7,7 @@ import { HeroCardList } from './HeroCardList';
 
 export async function loader({
   params,
-}: { params: { heroId?: string } }) {
+}: HeroLoaderParams) {
   await HahowqueryClient.ensureQueryData(listHeroesQuery());
   return { heroId: params.heroId || '' };
 }
