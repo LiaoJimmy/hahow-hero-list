@@ -38,6 +38,11 @@ app /
  ├── routes/
     ├── HeroList Hero List Page (/heroes)
     ├── HeroProfile Hero Profile Page (/heroes/:heroId)
+├── api/
+    ├── HeroesQuery.ts Hero related API calls
+├── types/
+    ├── axios.d.ts Axios type declaration extensions
+    ├── HeroesType.ts Hero related TypeScript types
 ```
 
 ## 3rd Party Libraries

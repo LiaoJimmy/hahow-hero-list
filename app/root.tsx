@@ -1,6 +1,5 @@
 import type { Route } from './+types/root';
 import {
-  QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
 
@@ -12,6 +11,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import HahowqueryClient from './api/HahowQueryClient';
 import './app.css';
 
 export const links: Route.LinksFunction = () => [
@@ -37,7 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <main>
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -45,11 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-const queryClient = new QueryClient();
-
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={HahowqueryClient}>
       <Outlet />
     </QueryClientProvider>
   );
