@@ -2,8 +2,6 @@
 
 A modern, production-ready template for building full-stack React applications using React Router.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
 ## Features
 
 - 🚀 Server-side rendering
@@ -21,7 +19,7 @@ A modern, production-ready template for building full-stack React applications u
 Install the dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### Development
@@ -29,17 +27,38 @@ npm install
 Start the development server with HMR:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+## Achitecture
+```
+app /
+ ├── routes/
+    ├── HeroList Hero List Page (/heroes)
+    ├── HeroProfile Hero Profile Page (/heroes/:heroId)
+```
+
+## 3rd Party Libraries
+- react-router: A user‑obsessed, standards‑focused, multi‑strategy router for React
+- axios: Promise based HTTP client for the browser and node.js
+- @tanstack/react-query: Powerful asynchronous state management, server-state utilities and data fetching
+
+### Development Tools
+- eslint: statically analyzes your code to quickly find problems
+- @antfu/eslint-config: Anthony's ESLint config preset
+- tailwind css: A utility-first CSS framework packed with classes
+- daisy css: Faster, cleaner, easier Tailwind CSS development
+- typescript: A strongly typed programming language that builds on JavaScript
+- vite: A blazing fast frontend build tool powering the next generation of web applications
 
 ## Building for Production
 
 Create a production build:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Deployment
