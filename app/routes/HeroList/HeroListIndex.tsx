@@ -1,3 +1,3 @@
 export default function HeroListIndex() {
-  return null;
+  return <title>Hero List Page</title>;
 }

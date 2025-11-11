@@ -13,14 +13,22 @@ export function Ability({ name, value, onIncrease, onDecrease }: AbilityProps) {
         :
       </span>
       <button
+        type="button"
         className="w-14 h-14 bg-red-400 text-white rounded disabled:opacity-50"
         onClick={onDecrease}
         disabled={value <= 0}
       >
         -
       </button>
-      <span className="w-8 text-center">{value}</span>
+      <input
+        readOnly
+        type="text"
+        className="w-6 text-center"
+        name={name}
+        defaultValue={value}
+      />
       <button
+        type="button"
         className="w-14 h-14 bg-green-400 text-white rounded"
         onClick={onIncrease}
       >
