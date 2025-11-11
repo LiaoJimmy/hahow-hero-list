@@ -49,6 +49,7 @@ app /
 - react-router: A user‑obsessed, standards‑focused, multi‑strategy router for React
 - axios: Promise based HTTP client for the browser and node.js
 - @tanstack/react-query: Powerful asynchronous state management, server-state utilities and data fetching
+- classnames: A simple JavaScript utility for conditionally joining classNames together
 
 ### Development Tools
 - eslint: statically analyzes your code to quickly find problems

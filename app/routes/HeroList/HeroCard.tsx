@@ -1,4 +1,7 @@
+import type { LoaderAwaiatedReturnType } from './HeroListLayout';
 import type { Hero } from '~/types/HeroesType';
+import classNames from 'classnames';
+import { useLoaderData } from 'react-router';
 
 interface HeroCardProps {
   hero: Hero;
@@ -6,12 +9,19 @@ interface HeroCardProps {
 }
 
 export function HeroCard({ hero, onSelect }: HeroCardProps) {
+  const { heroId: selectedHeroId } = useLoaderData<LoaderAwaiatedReturnType>();
+
   const handleCardClick = () => {
     onSelect(hero.id);
   };
 
   return (
-    <div className="card bg-base-100 w-72 shadow-sm" onClick={handleCardClick}>
+    <div
+      className={classNames('card bg-base-100 w-72 shadow-sm', {
+        'card-selected': hero.id === selectedHeroId,
+      })}
+      onClick={handleCardClick}
+    >
       <figure className="px-10 pt-10">
         <img
           src={hero.image}
@@ -20,11 +30,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
         />
       </figure>
       <div className="card-body items-center text-center">
-        <h2 className="card-title">
-          {
-            hero.name
-          }
-        </h2>
+        <h2 className="card-title">{hero.name}</h2>
       </div>
     </div>
   );

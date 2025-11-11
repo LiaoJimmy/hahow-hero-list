@@ -14,3 +14,7 @@ body {
     color-scheme: dark;
   }
 }
+
+.card-selected {
+  @apply bg-primary text-primary-content shadow-2xl;
+}

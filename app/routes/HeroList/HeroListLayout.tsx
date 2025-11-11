@@ -4,10 +4,13 @@ import HahowqueryClient from '~/api/HahowQueryClient';
 import { listHeroesQuery } from '~/api/HeroesQuery';
 import { HeroCardList } from './HeroCardList';
 
-export async function loader() {
+export async function loader({
+  params,
+}: { params: { heroId?: string } }) {
   await HahowqueryClient.ensureQueryData(listHeroesQuery());
-  return {};
+  return { heroId: params.heroId || '' };
 }
+export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof loader>>;
 
 export default function HeroListLayout() {
   const { data: heroes } = useSuspenseQuery(listHeroesQuery());
