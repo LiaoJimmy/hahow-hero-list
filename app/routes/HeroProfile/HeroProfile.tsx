@@ -11,9 +11,7 @@ import HeroProfileSchema from './HeroProfileSchema';
 export async function loader({
   params,
 }: HeroLoaderParams) {
-  await HahowqueryClient.ensureQueryData(
-    getHeroProfileQuery(params.heroId!),
-  );
+  await HahowqueryClient.fetchQuery(getHeroProfileQuery(params.heroId!));
   return { heroId: params.heroId || '' };
 }
 export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof loader>>;
@@ -23,11 +21,8 @@ export async function action({ request, params }: ActionFunctionArgs) {
   const entries = Object.fromEntries(formData);
   const profile = HeroProfileSchema.parse(entries);
   await patchHeroProfile(params.heroId!, profile);
-  HahowqueryClient.invalidateQueries({ queryKey: ['heroes'] });
-}
-
-export function HydrateFallback() {
-  return <div>Loading...</div>;
+  await HahowqueryClient.invalidateQueries({ queryKey: [['hero', params.heroId!, 'profile']] });
+  return null;
 }
 
 export default function HeroProfile() {
