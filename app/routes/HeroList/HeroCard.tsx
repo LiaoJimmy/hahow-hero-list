@@ -16,21 +16,23 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
   };
 
   return (
-    <div
-      className={classNames('card bg-base-100 w-72 shadow-sm cursor-pointer', {
-        'card-selected': hero.id === selectedHeroId,
-      })}
-      onClick={handleCardClick}
-    >
-      <figure className="px-10 pt-10">
-        <img
-          src={hero.image}
-          alt={hero.name}
-          className="rounded-xl"
-        />
-      </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">{hero.name}</h2>
+    <div className="carousel-item">
+      <div
+        className={classNames('card bg-base-100 shadow-sm cursor-pointer', {
+          'card-selected': hero.id === selectedHeroId,
+        })}
+        onClick={handleCardClick}
+      >
+        <figure className="px-10 pt-10">
+          <img
+            src={hero.image}
+            alt={hero.name}
+            className="rounded-xl"
+          />
+        </figure>
+        <div className="card-body items-center text-center">
+          <h2 className="card-title">{hero.name}</h2>
+        </div>
       </div>
     </div>
   );

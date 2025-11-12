@@ -44,9 +44,9 @@ export default function HeroProfile() {
   const restAP = totalAP - usedAP;
 
   return (
-    <Form method="post" className="flex border-4 border-primary rounded-lg shadow-lg">
+    <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-center">
       <title>Hero Profile Page</title>
-      <div className="p-4 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <Ability
           name="str"
           value={profile.str}
@@ -72,7 +72,7 @@ export default function HeroProfile() {
           onDecrease={() => setProfile({ ...profile, luk: profile.luk - 1 })}
         />
       </div>
-      <div className="flex flex-col justify-end gap-4 p-4 w-48">
+      <div className="flex flex-col justify-end gap-4 w-48">
         剩餘點數：
         {restAP}
         <button type="submit" className="btn btn-xl" disabled={restAP !== 0}>儲存</button>

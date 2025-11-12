@@ -12,6 +12,8 @@ A modern, production-ready template for building full-stack React applications u
 - 🎉 TailwindCSS for styling
 - 📖 [React Router docs](https://reactrouter.com/)
 
+- 🎠 Use carousel component to display hero images in a slider format.
+
 ## Getting Started
 
 ### Installation

@@ -8,7 +8,7 @@ interface HeroCardListProps {
 
 export function HeroCardList({ heroes, onSelect }: HeroCardListProps) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="carousel rounded-box gap-2">
       {
         heroes.map(hero => (
           <HeroCard key={hero.id} hero={hero} onSelect={onSelect} />

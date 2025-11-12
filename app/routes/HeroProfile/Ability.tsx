@@ -8,9 +8,8 @@ interface AbilityProps {
 export function Ability({ name, value, onIncrease, onDecrease }: AbilityProps) {
   return (
     <div className="flex items-center gap-2">
-      <span className="w-12 text-right">
+      <span className="w-8 text-left">
         {name}
-        :
       </span>
       <button
         type="button"

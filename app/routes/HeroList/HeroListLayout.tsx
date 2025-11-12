@@ -22,9 +22,11 @@ export default function HeroListLayout() {
   };
 
   return (
-    <div className="pt-16 flex flex-col items-center gap-4">
-      <HeroCardList heroes={heroes} onSelect={handleHeroSelect} />
-      <Outlet />
+    <div className="pt-16 flex justify-center">
+      <div className="w-full sm:w-9/10 lg:w-8/10 flex flex-col items-center gap-8">
+        <HeroCardList heroes={heroes} onSelect={handleHeroSelect} />
+        <Outlet />
+      </div>
     </div>
   );
 }
