@@ -61,6 +61,9 @@ app /
 - typescript: A strongly typed programming language that builds on JavaScript
 - vite: A blazing fast frontend build tool powering the next generation of web applications
 
+## Comment Rules
+Good naming and prevent to add comments. Only add comments when necessary, such as explaining why a particular approach was taken or providing context that isn't immediately clear from the code itself.
+
 ## Building for Production
 
 Create a production build:
