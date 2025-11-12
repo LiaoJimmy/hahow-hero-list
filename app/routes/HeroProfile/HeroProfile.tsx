@@ -33,13 +33,15 @@ export async function action({ request, params }: ActionFunctionArgs) {
 export default function HeroProfile() {
   const { heroId } = useLoaderData<LoaderAwaiatedReturnType>();
   const { data } = useSuspenseQuery(getHeroProfileQuery(heroId));
+
   const [profile, setProfile] = useState(data);
+  const [totalAP, setTotalAP] = useState(0);
 
   useEffect(() => {
     setProfile(data);
+    setTotalAP(data.str + data.int + data.agi + data.luk);
   }, [data]);
 
-  const totalAP = data.str + data.int + data.agi + data.luk;
   const usedAP = profile.str + profile.int + profile.agi + profile.luk;
   const restAP = totalAP - usedAP;
 

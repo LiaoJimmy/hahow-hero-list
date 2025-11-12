@@ -22,9 +22,9 @@ export function Ability({ name, value, onIncrease, onDecrease }: AbilityProps) {
       <input
         readOnly
         type="text"
-        className="w-6 text-center"
+        className="w-6 text-center pointer-events-none"
         name={name}
-        defaultValue={value}
+        value={value}
       />
       <button
         type="button"
