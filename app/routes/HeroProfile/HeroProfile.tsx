@@ -26,6 +26,10 @@ export async function action({ request, params }: ActionFunctionArgs) {
   HahowqueryClient.invalidateQueries({ queryKey: ['heroes'] });
 }
 
+export function HydrateFallback() {
+  return <div>Loading...</div>;
+}
+
 export default function HeroProfile() {
   const { heroId } = useLoaderData<LoaderAwaiatedReturnType>();
   const { data } = useSuspenseQuery(getHeroProfileQuery(heroId));
@@ -33,7 +37,7 @@ export default function HeroProfile() {
   const isSubmitting = navigation.state === 'submitting';
 
   const [profile, setProfile] = useState(data);
-  const [totalAP, setTotalAP] = useState(0);
+  const [totalAP, setTotalAP] = useState(data.str + data.int + data.agi + data.luk);
 
   useEffect(() => {
     setProfile(data);
