@@ -44,7 +44,7 @@ export default function HeroProfile() {
   const restAP = totalAP - usedAP;
 
   return (
-    <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-center">
+    <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-end justify-center">
       <title>Hero Profile Page</title>
       <div className="flex flex-col gap-4">
         <Ability
