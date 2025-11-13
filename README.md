@@ -1,16 +1,18 @@
 # hahow-hero-list
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Hahow front-end engineer project
+
+[Demo Link](https://hahow-hero-list.vercel.app/heroes)
 
 ## Features
 
+- 📖 React Router
 - 🚀 Server-side rendering
 - ⚡️ Hot Module Replacement (HMR)
 - 📦 Asset bundling and optimization
 - 🔄 Data loading and mutations
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
 - 🎠 Use carousel component to display hero images in a slider format.
 
 ## Getting Started
