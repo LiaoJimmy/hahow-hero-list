@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router';
 import HahowqueryClient from '~/api/HahowQueryClient';
 import { getHeroProfileQuery, patchHeroProfile } from '~/api/HeroesQuery';
+import HeroProfileSkeleton from '~/routes/HeroProfile/HeroProfileSkeleton';
 import { Ability } from './Ability';
 import HeroProfileSchema from './HeroProfileSchema';
 
@@ -42,7 +43,7 @@ export default function HeroProfile() {
   }, [data]);
 
   if (!profile || !data) {
-    return <span className="loading loading-spinner loading-xl"></span>;
+    return <HeroProfileSkeleton />;
   }
 
   const usedAP = profile.str + profile.int + profile.agi + profile.luk;
@@ -77,8 +78,10 @@ export default function HeroProfile() {
         />
       </div>
       <div className="flex flex-col justify-end gap-4 w-48">
-        剩餘點數：
-        {restAP}
+        <p>
+          剩餘點數：
+          {restAP}
+        </p>
         <button type="submit" className="btn btn-xl" disabled={restAP !== 0 || isSubmitting}>儲存</button>
       </div>
     </Form>
