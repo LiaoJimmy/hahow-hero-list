@@ -1,4 +1,4 @@
-# Welcome to React Router!
+# hahow-hero-list
 
 A modern, production-ready template for building full-stack React applications using React Router.
 
@@ -11,7 +11,6 @@ A modern, production-ready template for building full-stack React applications u
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
 - 📖 [React Router docs](https://reactrouter.com/)
-
 - 🎠 Use carousel component to display hero images in a slider format.
 
 ## Getting Started
@@ -37,11 +36,11 @@ Your application will be available at `http://localhost:5173`.
 ## Achitecture
 ```
 app /
- ├── routes/
-    ├── HeroList Hero List Page (/heroes)
-    ├── HeroProfile Hero Profile Page (/heroes/:heroId)
 ├── api/
     ├── HeroesQuery.ts Hero related API calls
+├── routes/
+    ├── HeroList Hero List Page (/heroes)
+    ├── HeroProfile Hero Profile Page (/heroes/:heroId)
 ├── types/
     ├── axios.d.ts Axios type declaration extensions
     ├── HeroesType.ts Hero related TypeScript types
