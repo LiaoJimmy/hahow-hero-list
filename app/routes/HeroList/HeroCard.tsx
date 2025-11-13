@@ -27,7 +27,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
           <img
             src={hero.image}
             alt={hero.name}
-            className="rounded-xl"
+            className="rounded-xl w-[200px] h-[200px]"
           />
         </figure>
         <div className="card-body items-center text-center">
