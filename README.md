@@ -13,11 +13,18 @@ Hahow front-end engineer project
 - 🔄 Data loading and mutations
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
+
+### Notes
+
+- 🚄 Use pnpm by default, fast, disk space efficient package manager
 - 🎠 Use carousel component to display hero images in a slider format.
+- ⚓️ Redirect to /heroes when accessing undefined routes.
 
 ## Getting Started
 
 ### Installation
+
+**Please make sure you have [pnpm](https://pnpm.io/) installed.**
 
 Install the dependencies:
 
