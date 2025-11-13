@@ -37,11 +37,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <main>
-          {children}
-        </main>
-        <ScrollRestoration />
-        <Scripts />
+        <QueryClientProvider client={HahowqueryClient}>
+          <main>
+            {children}
+          </main>
+          <ScrollRestoration />
+          <Scripts />
+        </QueryClientProvider>
       </body>
     </html>
   );
@@ -49,9 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <QueryClientProvider client={HahowqueryClient}>
-      <Outlet />
-    </QueryClientProvider>
+    <Outlet />
   );
 }
 

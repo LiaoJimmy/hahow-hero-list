@@ -8,20 +8,22 @@ import { getHeroProfileQuery, patchHeroProfile } from '~/api/HeroesQuery';
 import { Ability } from './Ability';
 import HeroProfileSchema from './HeroProfileSchema';
 
-export async function loader({
+export async function clientLoader({
   params,
 }: HeroLoaderParams) {
-  await HahowqueryClient.fetchQuery(getHeroProfileQuery(params.heroId!));
+  await HahowqueryClient.ensureQueryData(getHeroProfileQuery(params.heroId!));
   return { heroId: params.heroId || '' };
 }
-export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof loader>>;
+export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof clientLoader>>;
 
-export async function action({ request, params }: ActionFunctionArgs) {
+export async function clientAction({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
   const entries = Object.fromEntries(formData);
   const profile = HeroProfileSchema.parse(entries);
   await patchHeroProfile(params.heroId!, profile);
-  await HahowqueryClient.invalidateQueries({ queryKey: [['hero', params.heroId!, 'profile']] });
+  HahowqueryClient.invalidateQueries({
+    queryKey: getHeroProfileQuery(params.heroId!).queryKey,
+  });
   return null;
 }
 
