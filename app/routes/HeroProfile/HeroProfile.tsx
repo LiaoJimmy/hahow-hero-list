@@ -1,6 +1,6 @@
 import type { ActionFunctionArgs } from 'react-router';
-import type { HeroLoaderParams } from '~/types/HeroesType';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import type { HeroLoaderParams, HeroProfile as HeroProfileType } from '~/types/HeroesType';
+import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router';
 import HahowqueryClient from '~/api/HahowQueryClient';
@@ -11,7 +11,6 @@ import HeroProfileSchema from './HeroProfileSchema';
 export async function clientLoader({
   params,
 }: HeroLoaderParams) {
-  await HahowqueryClient.ensureQueryData(getHeroProfileQuery(params.heroId!));
   return { heroId: params.heroId || '' };
 }
 export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof clientLoader>>;
@@ -29,21 +28,25 @@ export async function clientAction({ request, params }: ActionFunctionArgs) {
 
 export default function HeroProfile() {
   const { heroId } = useLoaderData<LoaderAwaiatedReturnType>();
-  const { data } = useSuspenseQuery(getHeroProfileQuery(heroId));
+  const { data } = useQuery(getHeroProfileQuery(heroId));
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-
-  const [profile, setProfile] = useState(data);
-  const [totalAP, setTotalAP] = useState(data.str + data.int + data.agi + data.luk);
+  const [profile, setProfile] = useState<HeroProfileType>();
+  const [totalAP, setTotalAP] = useState(0);
 
   useEffect(() => {
-    setProfile(data);
-    setTotalAP(data.str + data.int + data.agi + data.luk);
+    if (data) {
+      setProfile(data);
+      setTotalAP(data.str + data.int + data.agi + data.luk);
+    }
   }, [data]);
+
+  if (!profile || !data) {
+    return <span className="loading loading-spinner loading-xl"></span>;
+  }
 
   const usedAP = profile.str + profile.int + profile.agi + profile.luk;
   const restAP = totalAP - usedAP;
-
   return (
     <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-end justify-center">
       <title>Hero Profile Page</title>

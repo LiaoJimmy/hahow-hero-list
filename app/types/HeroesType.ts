@@ -4,7 +4,7 @@ export interface Hero {
   image: string;
 }
 
-interface HeroProfile {
+export interface HeroProfile {
   str: number;
   int: number;
   agi: number;
