@@ -10,8 +10,12 @@ interface HeroCardProps {
 
 export function HeroCard({ hero, onSelect }: HeroCardProps) {
   const { heroId: selectedHeroId } = useLoaderData<LoaderAwaiatedReturnType>();
+  const isSelected = hero.id === selectedHeroId;
 
   const handleCardClick = () => {
+    if (isSelected) {
+      return;
+    }
     onSelect(hero.id);
   };
 
@@ -19,7 +23,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
     <div className="carousel-item">
       <div
         className={classNames('card bg-base-100 shadow-sm cursor-pointer', {
-          'card-selected': hero.id === selectedHeroId,
+          'card-selected': isSelected,
         })}
         onClick={handleCardClick}
       >
