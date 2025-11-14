@@ -19,6 +19,7 @@ Hahow front-end engineer project
 - 🚄 Use pnpm by default, fast, disk space efficient package manager
 - 🎠 Use carousel component to display hero images in a slider format.
 - ⚓️ Redirect to /heroes when accessing undefined routes.
+- 🍪 Cache heroes/:heroId router data in vercel CDN (3 minutes age)
 
 ## Getting Started
 
