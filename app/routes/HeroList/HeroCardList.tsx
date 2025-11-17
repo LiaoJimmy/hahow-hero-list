@@ -8,7 +8,7 @@ interface HeroCardListProps {
 
 export function HeroCardList({ heroes, onSelect }: HeroCardListProps) {
   return (
-    <div className="carousel carousel-center gap-2 w-full">
+    <div className="carousel carousel-center gap-4 w-full">
       {
         heroes.map(hero => (
           <HeroCard key={hero.id} hero={hero} onSelect={onSelect} />
