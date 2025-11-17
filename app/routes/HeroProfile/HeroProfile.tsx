@@ -33,12 +33,10 @@ export default function HeroProfile() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const [profile, setProfile] = useState<HeroProfileType>();
-  const [totalAP, setTotalAP] = useState(0);
 
   useEffect(() => {
     if (data) {
       setProfile(data);
-      setTotalAP(data.str + data.int + data.agi + data.luk);
     }
   }, [data]);
 
@@ -46,6 +44,7 @@ export default function HeroProfile() {
     return <HeroProfileSkeleton />;
   }
 
+  const totalAP = data.str + data.int + data.agi + data.luk;
   const usedAP = profile.str + profile.int + profile.agi + profile.luk;
   const restAP = totalAP - usedAP;
   return (
