@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { Form, useLoaderData, useNavigation } from 'react-router';
 import HahowqueryClient from '~/api/HahowQueryClient';
-import { getHeroProfileQuery, patchHeroProfile } from '~/api/HeroesQuery';
+import { getHeroProfile, patchHero } from '~/api/HeroesQuery';
 import HeroProfileSkeleton from '~/routes/HeroProfile/HeroProfileSkeleton';
 import { Ability } from './Ability';
 import HeroProfileSchema from './HeroProfileSchema';
@@ -20,16 +20,16 @@ export async function clientAction({ request, params }: ActionFunctionArgs) {
   const formData = await request.formData();
   const entries = Object.fromEntries(formData);
   const profile = HeroProfileSchema.parse(entries);
-  await patchHeroProfile(params.heroId!, profile);
+  await patchHero(params.heroId!, profile);
   HahowqueryClient.invalidateQueries({
-    queryKey: getHeroProfileQuery(params.heroId!).queryKey,
+    queryKey: getHeroProfile(params.heroId!).queryKey,
   });
   return null;
 }
 
 export default function HeroProfile() {
   const { heroId } = useLoaderData<LoaderAwaiatedReturnType>();
-  const { data } = useQuery(getHeroProfileQuery(heroId));
+  const { data } = useQuery(getHeroProfile(heroId));
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const [profile, setProfile] = useState<HeroProfileType>();

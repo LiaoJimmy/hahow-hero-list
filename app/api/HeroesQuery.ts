@@ -1,9 +1,8 @@
 import type { GetHeroProfileResponse, GetHeroResponse, ListHeroesResponse, PatchHeroProfileBody } from '~/types/HeroesType';
-
 import { queryOptions } from '@tanstack/react-query';
 import HahowRecruitAPI from './HahowRecruitAPI';
 
-export function listHeroesQuery() {
+export function listHeroes() {
   return queryOptions({
     queryKey: ['heroes'],
     queryFn: () => {
@@ -12,7 +11,7 @@ export function listHeroesQuery() {
   });
 }
 
-export function getHeroQuery(heroId: string) {
+export function getHero(heroId: string) {
   return queryOptions({
     queryKey: ['hero', heroId],
     queryFn: () => {
@@ -21,7 +20,7 @@ export function getHeroQuery(heroId: string) {
   });
 }
 
-export function getHeroProfileQuery(heroId: string) {
+export function getHeroProfile(heroId: string) {
   return queryOptions({
     queryKey: ['hero', heroId, 'profile'],
     queryFn: () => {
@@ -30,6 +29,6 @@ export function getHeroProfileQuery(heroId: string) {
   });
 }
 
-export function patchHeroProfile(heroId: string, profile: PatchHeroProfileBody) {
+export function patchHero(heroId: string, profile: PatchHeroProfileBody) {
   return HahowRecruitAPI.patch<PatchHeroProfileBody>(`/heroes/${heroId}/profile`, profile);
 }
