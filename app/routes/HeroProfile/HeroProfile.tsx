@@ -78,7 +78,7 @@ export default function HeroProfile() {
         />
       </div>
       <div className="flex flex-col gap-4 w-48">
-        <p>
+        <p className="text-center sm:text-left">
           剩餘點數：
           {restAP}
         </p>
