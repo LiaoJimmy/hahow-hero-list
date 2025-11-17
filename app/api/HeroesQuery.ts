@@ -13,7 +13,7 @@ export function listHeroes() {
 
 export function getHero(heroId: string) {
   return queryOptions({
-    queryKey: ['hero', heroId],
+    queryKey: ['heroes', heroId],
     queryFn: () => {
       return HahowRecruitAPI.get<GetHeroResponse>(`/heroes/${heroId}`);
     },
@@ -22,7 +22,7 @@ export function getHero(heroId: string) {
 
 export function getHeroProfile(heroId: string) {
   return queryOptions({
-    queryKey: ['hero', heroId, 'profile'],
+    queryKey: ['heroes', heroId, 'profile'],
     queryFn: () => {
       return HahowRecruitAPI.get<GetHeroProfileResponse>(`/heroes/${heroId}/profile`);
     },
