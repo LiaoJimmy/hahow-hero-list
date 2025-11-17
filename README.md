@@ -68,6 +68,7 @@ app /
 - axios: Promise based HTTP client for the browser and node.js
 - @tanstack/react-query: Powerful asynchronous state management, server-state utilities and data fetching
 - classnames: A simple JavaScript utility for conditionally joining classNames together
+- zod: TypeScript-first schema validation with static type inference
 
 ### Development Tools
 - eslint: statically analyzes your code to quickly find problems
