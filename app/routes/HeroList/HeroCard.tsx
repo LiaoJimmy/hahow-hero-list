@@ -35,7 +35,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
           />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">{hero.name}</h2>
+          <h1 className="card-title text-xl">{hero.name}</h1>
         </div>
       </div>
     </div>
