@@ -17,8 +17,8 @@ Hahow front-end engineer project
 ### Notes
 
 - 🚄 Use pnpm by default, fast, disk space efficient package manager
-- 🎠 Use carousel component to display hero images in a slider format.
-- ⚓️ Redirect to /heroes when accessing undefined routes.
+- 🎠 Use carousel component to display hero images in a slider format
+- ⚓️ Redirect to /heroes when accessing undefined routes
 - 🍪 Cache heroes/:heroId router data in vercel CDN (5 minutes age)
 
 ## Getting Started
@@ -47,13 +47,20 @@ Your application will be available at `http://localhost:5173`.
 ```
 app /
 ├── api/
-    ├── HeroesQuery.ts Hero related API calls
+    ├── HahowQueryClient.ts Hahow tanstack query client
+    ├── HahowRecruitAPI.ts Hahow recruit API axios
+    ├── HeroesQuery.ts Hero related query and action
 ├── routes/
-    ├── HeroList Hero List Page (/heroes)
-    ├── HeroProfile Hero Profile Page (/heroes/:heroId)
+    ├── HeroList Hero list page (/heroes)
+    ├── HeroProfile Hero profile page (/heroes/:heroId)
+    ├── CatchAll.tsx Catch all routes and redirect to /heroes
+    ├── Home.tsx / Index route and redirect to /heroes
 ├── types/
     ├── axios.d.ts Axios type declaration extensions
     ├── HeroesType.ts Hero related TypeScript types
+├── app.css CSS root file
+├── root.tsx React router root
+├── router.ts React router
 ```
 
 ## 3rd Party Libraries
@@ -75,7 +82,7 @@ Good naming and prevent to add comments. Only add comments when necessary, such 
 
 ## Styling
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+This template comes with [Tailwind CSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) already configured.
 
 ---
 
@@ -83,7 +90,7 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) and [DaisyUI](
 Type check the project using:
 
 ```bash
-pnpm run type-check
+pnpm run typecheck
 ```
 
 ## Building for Production
