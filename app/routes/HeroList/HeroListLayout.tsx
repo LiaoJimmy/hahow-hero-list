@@ -22,7 +22,7 @@ export default function HeroListLayout() {
   };
 
   return (
-    <div className="pt-8 flex justify-center">
+    <div className="py-8 flex justify-center">
       <div className="flex flex-col items-center w-9/10 lg:w-3xl xl:w-7xl gap-8">
         <HeroCardList heroes={heroes} onSelect={handleHeroSelect} />
         <Outlet />
