@@ -1,34 +1,15 @@
-import type { ActionFunctionArgs } from 'react-router';
-import type { HeroLoaderParams, HeroProfile as HeroProfileType } from '~/types/HeroesType';
+import type { SyntheticEvent } from 'react';
+import type { HeroProfile as HeroProfileType } from '~/types/HeroesType';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { Form, useLoaderData, useNavigation } from 'react-router';
+import { Form, useNavigation, useParams } from 'react-router';
 import HahowqueryClient from '~/api/HahowQueryClient';
 import { getHeroProfile, patchHero } from '~/api/HeroesQuery';
 import HeroProfileSkeleton from '~/routes/HeroProfile/HeroProfileSkeleton';
 import { Ability } from './Ability';
-import HeroProfileSchema from './HeroProfileSchema';
-
-export async function clientLoader({
-  params,
-}: HeroLoaderParams) {
-  return { heroId: params.heroId || '' };
-}
-export type LoaderAwaiatedReturnType = Awaited<ReturnType<typeof clientLoader>>;
-
-export async function clientAction({ request, params }: ActionFunctionArgs) {
-  const formData = await request.formData();
-  const entries = Object.fromEntries(formData);
-  const profile = HeroProfileSchema.parse(entries);
-  await patchHero(params.heroId!, profile);
-  HahowqueryClient.invalidateQueries({
-    queryKey: getHeroProfile(params.heroId!).queryKey,
-  });
-  return null;
-}
 
 export default function HeroProfile() {
-  const { heroId } = useLoaderData<LoaderAwaiatedReturnType>();
+  const { heroId = '' } = useParams();
   const { data } = useQuery(getHeroProfile(heroId));
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -44,11 +25,20 @@ export default function HeroProfile() {
     return <HeroProfileSkeleton />;
   }
 
+  const handleFormSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+    patchHero(heroId, profile).then(() => {
+      HahowqueryClient.invalidateQueries({
+        queryKey: getHeroProfile(heroId).queryKey,
+      });
+    });
+  };
+
   const totalAP = data.str + data.int + data.agi + data.luk;
   const usedAP = profile.str + profile.int + profile.agi + profile.luk;
   const restAP = totalAP - usedAP;
   return (
-    <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-center sm:items-end justify-center">
+    <Form method="post" className="flex rounded-lg shadow-lg gap-8 sm:gap-16 flex-col sm:flex-row items-center sm:items-end justify-center" onSubmit={handleFormSubmit}>
       <title>Hero Profile Page</title>
       <div className="flex flex-col gap-4 w-54">
         <Ability
